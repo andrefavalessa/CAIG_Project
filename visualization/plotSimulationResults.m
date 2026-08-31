@@ -13,7 +13,9 @@ function plotSimulationResults( ...
     plot(truth.tCAIG,rad2deg(caig.measured(:,1)),'.');
     ylabel('\omega_x [deg/s]');
     title('Synthetic FOG and CAIG Angular-Rate Data');
-    legend('FOG 100 Hz','CAIG 5 Hz');
+    legend( ...
+        sprintf('FOG %.0f Hz',cfg.FsFOG), ...
+        sprintf('CAIG %.0f Hz',cfg.FsCAIG));
     grid on;
 
     subplot(3,1,2);
