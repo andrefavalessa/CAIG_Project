@@ -20,6 +20,9 @@ function cfg = getSimulationConfig()
     cfg.dtCAIG = 1/cfg.FsCAIG;
     cfg.sampleRatio = cfg.FsFOG/cfg.FsCAIG;
 
+    assert(cfg.duration>0,'Simulation duration must be positive.');
+    assert(cfg.FsFOG>0,'FOG sample rate must be positive.');
+    assert(cfg.FsCAIG>0,'CAIG sample rate must be positive.');
     assert( ...
         mod(cfg.sampleRatio,1) == 0, ...
         'FOG/CAIG rate ratio must be integer for regression check.');
@@ -58,6 +61,15 @@ function cfg = getSimulationConfig()
     cfg.sigmaCAIG = cfg.N_CAIG*sqrt(cfg.FsCAIG/2);
 
     %% Kalman and software-regression settings
+    % Zhang initialization settings are kept distinct from the injected
+    % true misalignment and FOG-bias values above.
+    cfg.X0 = zeros(6,1);
+    cfg.phiStd0Deg = [1;2;3];
+    cfg.biasStd0DegH = [0.1;0.1;0.1];
+    cfg.P0 = diag([ ...
+        deg2rad(cfg.phiStd0Deg).^2; ...
+        (deg2rad(cfg.biasStd0DegH)/3600).^2 ...
+    ]);
     cfg.Phi = eye(6);
     cfg.Q = zeros(6);
 

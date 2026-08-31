@@ -41,7 +41,8 @@ function validation = validateMainSimulation( ...
         &&validation.checkCAIGNoise ...
         &&validation.checkKalmanRegression;
 
-    % Keep inputs explicit in the interface and guard their expected sizes.
+    % Informational row counts; interface assertions run at subsystem
+    % boundaries in synchronizeSensors and runZhangKalman.
     validation.expectedFOGRows = truth.NFOG;
     validation.expectedCAIGRows = truth.NCAIG;
 end

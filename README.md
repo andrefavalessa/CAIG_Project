@@ -46,6 +46,7 @@ CAIG_Project/
 │   └── skewMatrix.m
 ├── 01_V1_CAIG_Physics/
 │   ├── CAIG_V1_ideal.m
+│   ├── README_V1.md
 │   └── validation/
 │       ├── CAIG_V1_validation_OmegaCrossG.m
 │       ├── CAIG_V1_validation_phase_detection.m
@@ -113,13 +114,15 @@ The random execution order is intentionally fixed:
 rng default -> simulate FOG -> simulate CAIG
 ~~~~
 
-Validation and plotting do not generate random numbers. The main script determines the project root from its own location and adds the project folders with `addpath(genpath(projectRoot))`, so it does not depend on the MATLAB current working directory.
+Validation and plotting do not generate random numbers. The main script determines the project root from its own location and explicitly adds only `config`, `motion`, `sensors`, `synchronization`, `estimation`, `validation`, `visualization`, and `utils`. It does not recursively add `.git`, historical scripts, figures, or references, and it does not depend on the MATLAB current working directory.
+
+The main also checks that `trackingKF`, `gyroparams`, and `imuSensor` are available before simulation begins. No fallback sensor or filter implementation is selected silently.
 
 ### Module responsibilities
 
 | Module | Responsibility |
 |---|---|
-| `config/getSimulationConfig.m` | Validated constants, parameter provenance, noise conventions, and regression references |
+| `config/getSimulationConfig.m` | Validated constants, parameter provenance, Kalman initialization, noise conventions, and regression references |
 | `motion/generateLevel2Sway.m` | Zhang level-2 sway and the existing 3-2-1 body-rate equations |
 | `sensors/simulateCAIGPhysicsY.m` | V1 Y-axis physical phase validation |
 | `sensors/simulateFOG.m` | Zhang frame transformation and MATLAB `gyroparams`/`imuSensor` FOG generation |
@@ -131,7 +134,9 @@ Validation and plotting do not generate random numbers. The main script determin
 | `visualization/plotSimulationResults.m` | Existing sensor, phase, misalignment, and bias plots |
 | `utils/skewMatrix.m` | Shared skew-matrix convention used by the frame and measurement models |
 
-The modular refactor reduced `CAIG_Main_Simulation.m` from 1,536 lines to 68 lines without changing the validated numerical output.
+The modular refactor reduced the original 1,536-line monolith to a short orchestration script without changing the validated numerical output.
+
+The two CAIG layers remain deliberately separate: `simulateCAIGPhysicsY` validates the physical V1 Y-sensitive phase model, while `simulateCAIG` provides the three-axis rate-level abstraction required by the Zhang monitoring system. The project does not claim that a physical triaxial atom-interferometer geometry has been implemented.
 
 ---
 
@@ -870,7 +875,7 @@ CAIG 5 Hz
 
 retimed FOG - CAIG
   -> DeltaOmega
-  -> custom six-state Zhang Kalman filter
+  -> six-state Zhang model using trackingKF
 ~~~~
 
 For the current aligned baseline, `retime` selects existing FOG samples, so the observation covariance remains
@@ -946,6 +951,8 @@ project-specific validation and acceptance criteria
 ~~~~
 
 The main estimator keeps the Zhang state and measurement equations but executes them through `trackingKF`. The dedicated manual-Kalman validation script remains unchanged in `03_Analysis` as independent evidence.
+
+The baseline measurement matrix remains `H = [skewMatrix(omega) eye(3)]`, with the true simulated angular rate used for `omega`. This intentional choice isolates the Zhang observation model from errors-in-variables effects. `X0`, `P0`, `Phi`, and `Q` are defined in `getSimulationConfig`; `Q = 0` because the injected states are constant.
 
 `insfilterAsync` is relevant as a MATLAB architectural example of asynchronous fusion, but it is not used as a drop-in replacement because its state definition and sensor model differ from the Zhang monitoring model.
 
@@ -1099,14 +1106,14 @@ From the `CAIG_Project` root:
 CAIG_Main_Simulation
 ~~~~
 
-The main script locates its own directory and adds all project subdirectories to the MATLAB path. It can also be launched from another working directory with:
+The main script locates its own directory and adds only the eight modular source directories to the MATLAB path. Historical V1/V2 scripts, analysis scripts, figures, references, and `.git` are not added. It can also be launched from another working directory with:
 
 ~~~~matlab
 projectRoot = 'path/to/CAIG_Project';
 run(fullfile(projectRoot,'CAIG_Main_Simulation.m'))
 ~~~~
 
-The main workflow requires Sensor Fusion and Tracking Toolbox because it uses `trackingKF`. It stops with an explicit error if `trackingKF` is unavailable. The generated `SimulationOutput` struct contains synchronized sensor timetables, estimate histories, CAIG phase/probability outputs, the final estimates, `R`, and the acceptance result.
+Before execution, the main verifies that `trackingKF`, `gyroparams`, and `imuSensor` are available. It stops with an explicit error if any dependency is unavailable. The generated `SimulationOutput` struct contains synchronized sensor timetables, estimate histories, CAIG phase/probability outputs, final estimates, `R`, the acceptance result, the complete configuration, validation details, and the CAIG-physics result struct.
 
 ### Validated development and analysis scripts
 
