@@ -1,0 +1,33 @@
+{
+  "originalFiles": 598,
+  "byteIdenticalAfterMove": 592,
+  "referenceFilesByteIdentical": 69,
+  "scientificMatlabFilesByteIdentical": 38,
+  "intentionalPathOrDocumentationEdits": [
+    {
+      "oldPath": ".gitignore",
+      "newPath": ".gitignore"
+    },
+    {
+      "oldPath": "CAIG_Main_Simulation.m",
+      "newPath": "CAIG_Main_Simulation.m"
+    },
+    {
+      "oldPath": "README.md",
+      "newPath": "docs/MODULAR_BASELINE.md"
+    },
+    {
+      "oldPath": "01_V1_CAIG_Physics/README_V1.md",
+      "newPath": "archive/v1/README_V1.md"
+    },
+    {
+      "oldPath": "05_References/parameter_sources.md",
+      "newPath": "references/parameter_sources.md"
+    },
+    {
+      "oldPath": "05_Zhang_Physical_Figure_Reproduction/README.md",
+      "newPath": "experiments/zhang_2019/README.md"
+    }
+  ],
+  "missingFiles": []
+}

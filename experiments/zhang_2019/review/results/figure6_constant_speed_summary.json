@@ -1,0 +1,103 @@
+{
+  "caseName": "constant_speed",
+  "matlabVersion": "25.1.0.2973910 (R2025a) Update 1",
+  "fogBackend": "MATLAB gyroparams + imuSensor, single-sided",
+  "durationSec": 600,
+  "sampleRatesHz": [
+    100,
+    5
+  ],
+  "interrogationSec": 0.001,
+  "scaleFactorSec": 179.74018074831858,
+  "probabilityRange": [
+    0.49765162079154296,
+    0.5023398527537032
+  ],
+  "loopPhaseRangeRad": [
+    1.5660995511097564,
+    1.5754760493831186
+  ],
+  "designBranchDepartureBoundRad": 0.45092988649762034,
+  "differentialPhysicsMaxErrorRad": 4.0766001685454967e-17,
+  "phaseInverseMaxErrorRad": 4.440892098500626e-16,
+  "rateReconstructionMaxErrorRadPerSec": 2.5275463146068322e-18,
+  "probabilityInterventionRateChange": 1.1127266012071993e-06,
+  "causalPrefixMaxStateDifference": 0,
+  "unavailableSupportRejected": true,
+  "synchronizationRan": true,
+  "maximumSupportPastAvailabilitySec": 1.1368683772161603e-13,
+  "interpolationRightWeightRange": [
+    0.09999999998635759,
+    0.1000000000031264
+  ],
+  "fogSampleSigmaTheory": 5.817764173314432e-06,
+  "fogSampleSigmaEmpirical": [
+    5.817014259386179e-06,
+    5.825030894454493e-06,
+    5.809431823181547e-06
+  ],
+  "observationSigmaRange": [
+    5.268209523205914e-06,
+    5.268209523292101e-06
+  ],
+  "minimumCovarianceEigenvalue": 8.901000458850047e-15,
+  "sensitivityRank": 3,
+  "scaledSensitivitySingularValues": [
+    0.00017117312341677387,
+    0.00012202760846813736,
+    2.6554338933080925e-05,
+    8.52145249951929e-19,
+    4.7298107040694343e-20,
+    3.176255804317833e-20
+  ],
+  "finalMisalignmentDeg": [
+    0.7086956188212842,
+    2.402465469577235,
+    2.662617031511723
+  ],
+  "finalBiasDegH": [
+    -0.027261591465859256,
+    -0.001924599429708423,
+    0.0692119989423955
+  ],
+  "injectedMisalignmentDeg": [
+    1,
+    2,
+    3.0000000000000004
+  ],
+  "injectedBiasDegH": [
+    0.10000000000000002,
+    0.10000000000000002,
+    0.10000000000000002
+  ],
+  "finalMisalignmentErrorDeg": [
+    -0.2913043811787158,
+    0.40246546957723517,
+    -0.3373829684882774
+  ],
+  "finalBiasErrorDegH": [
+    -0.12726159146585928,
+    -0.10192459942970844,
+    -0.030788001057604514
+  ],
+  "lastMinuteMeanMisalignmentDeg": [
+    0.7041446544923148,
+    2.3871650365009596,
+    2.6453706027737356
+  ],
+  "lastMinuteMeanBiasDegH": [
+    -0.029025858412975454,
+    -0.0007389093854560994,
+    0.07103518847515208
+  ],
+  "nullspacePriorCovarianceChange": 7.159331776288373e-15,
+  "qualitativeInterpretation": "Figure 6 style weak observability: only three state combinations are identifiable; individual plateaus depend on the prior.",
+  "limitations": [
+    "1 ms known principal-branch operation, not nominal 24.7 ms fringe acquisition",
+    "Ideal CAIG probability readout; no short-T sensitivity claim",
+    "Three virtual axes and quasi-static midpoint phase",
+    "First-order Zhang estimator versus finite sensor-frame rotation",
+    "One seeded realization; fixed bias, not stochastic drift"
+  ],
+  "allChecksPassed": true
+}
