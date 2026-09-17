@@ -1,11 +1,10 @@
-# Independent legacy analyses
+# Independent noise, timing and estimator studies
 
-These scripts formerly occupied `03_Analysis`. Inspection found complete,
-self-contained studies with local helper functions and MATLAB/toolbox calls,
-not reusable modules called by `CAIG_Main_Simulation`. They neither load files
-from other stages nor automatically export/overwrite the archived figures.
-Their numerical source is unchanged; run scripts individually, never add this
-directory recursively to the main or Zhang experiment path.
+These self-contained studies use script-local helper functions and MATLAB
+toolbox functions. They examine noise assumptions, timing and estimator behavior
+independently of `CAIG_Main_Simulation`. They neither load files
+from other experiments nor automatically export/overwrite the archived figures.
+Run scripts individually; do not add this directory recursively to the main or Zhang experiment path.
 
 | Script group | Scientific/software question |
 |---|---|
@@ -27,5 +26,5 @@ run('experiments/legacy_analysis/CAIG_Kalman_trackingKF_validation.m')
 
 These scripts clear workspace variables and figures. Run one at a time in a
 separate session when preserving interactive work matters. Toolbox requirements
-depend on the study; the main reorganization checks do not rerun every Monte
-Carlo/duration experiment. Nothing here is imported by `experiments/zhang_2019`.
+depend on the study; the main workflow does not execute these Monte Carlo
+or duration experiments. Nothing here is imported by `experiments/zhang_2019`.

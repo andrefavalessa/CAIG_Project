@@ -1,11 +1,11 @@
-> Retained modular-baseline documentation (formerly the root README).
-> Commands and code paths below are relative to the repository root unless stated
-> otherwise. Historical numerical/scientific statements describe that model;
-> they are not validation of probability-based acquisition or quantitative Zhang
-> reproduction. Start with the [current project README](../README.md) for the
-> independent physical-chain experiment and its unresolved limitations.
+# Modular CAIG-FOG simulation
 
-# CAIG MATLAB Simulation
+This document describes the system-level, rate-based simulator and its
+supporting numerical studies. It is distinct from the
+[physical probability-chain experiment](../experiments/zhang_2019/README.md).
+Commands and paths are relative to the repository root unless stated otherwise.
+The numerical checks described here do not establish probability-based
+acquisition, hardware performance or quantitative reproduction of Zhang.
 
 ## 1. Project objective
 
@@ -15,7 +15,7 @@ This project develops a MATLAB simulation of a Cold Atom Interference Gyroscope 
 
 **Supporting paper:** Wang et al. (2023), *Improving measurement performance via fusion of classical and quantum accelerometers*. Wang is complementary and does not replace the gyroscope equations from Zhang.
 
-Development flow:
+Model and diagnostic scope:
 
 ~~~~text
 CAIG physics -> CAIG + FOG -> frame misalignment -> triaxial motion
@@ -40,7 +40,7 @@ CAIG_Project/
   references/
 ~~~~
 
-The modular main simulation is the recommended entry point. The numbered V1/V2 folders preserve validated development stages, while `experiments/legacy_analysis` contains independent scientific and software-validation evidence. Those analysis scripts are not called by the modular main.
+`CAIG_Main_Simulation` is the entry point for this model. Independent noise, timing and estimator studies are documented in `experiments/legacy_analysis`; they are not called by the modular simulator. Archived implementations are retained for reference and are not runtime dependencies.
 
 ### Modular workflow
 
@@ -63,7 +63,7 @@ The random execution order is intentionally fixed:
 rng default -> simulate FOG -> simulate CAIG
 ~~~~
 
-Validation and plotting do not generate random numbers. The main script determines the project root from its own location and explicitly adds only `src/config`, `motion`, `sensors`, `synchronization`, `estimation`, `validation`, `visualization`, and `utils`. It does not recursively add `.git`, historical scripts, figures, or references, and it does not depend on the MATLAB current working directory.
+Validation and plotting do not generate random numbers. The main script determines the project root from its own location and explicitly adds only the `config`, `motion`, `sensors`, `synchronization`, `estimation`, `validation`, `visualization`, and `utils` directories within `src/`. It does not recursively add `.git`, historical scripts, figures, or references, and it does not depend on the MATLAB current working directory.
 
 The main also checks that `trackingKF`, `gyroparams`, and `imuSensor` are available before simulation begins. No fallback sensor or filter implementation is selected silently.
 
@@ -73,7 +73,7 @@ The main also checks that `trackingKF`, `gyroparams`, and `imuSensor` are availa
 |---|---|
 | `src/config/getSimulationConfig.m` | Validated constants, parameter provenance, Kalman initialization, noise conventions, and regression references |
 | `src/motion/generateLevel2Sway.m` | Zhang level-2 sway and the existing 3-2-1 body-rate equations |
-| `src/sensors/simulateCAIGPhysicsY.m` | V1 Y-axis physical phase validation |
+| `src/sensors/simulateCAIGPhysicsY.m` | Ideal Y-axis physical phase validation |
 | `src/sensors/simulateFOG.m` | Zhang frame transformation and MATLAB `gyroparams`/`imuSensor` FOG generation |
 | `src/sensors/simulateCAIG.m` | Three-axis CAIG rate-level abstraction and white noise |
 | `src/synchronization/synchronizeSensors.m` | `timetable`, `retime`, Zhang observation, and manual-index regression check |
@@ -83,34 +83,34 @@ The main also checks that `trackingKF`, `gyroparams`, and `imuSensor` are availa
 | `src/visualization/plotSimulationResults.m` | Existing sensor, phase, misalignment, and bias plots |
 | `src/utils/skewMatrix.m` | Shared skew-matrix convention used by the frame and measurement models |
 
-The modular refactor reduced the original 1,536-line monolith to a short orchestration script without changing the validated numerical output.
+The orchestration script exposes sensor generation, synchronization, estimation and numerical verification as separate operations.
 
-The two CAIG layers remain deliberately separate: `simulateCAIGPhysicsY` validates the physical V1 Y-sensitive phase model, while `simulateCAIG` provides the three-axis rate-level abstraction required by the Zhang monitoring system. The project does not claim that a physical triaxial atom-interferometer geometry has been implemented.
+The two CAIG layers remain deliberately separate: `simulateCAIGPhysicsY` validates the physical Y-sensitive phase model, while `simulateCAIG` provides the three-axis rate-level abstraction required by the Zhang monitoring system. The project does not claim that a physical triaxial atom-interferometer geometry has been implemented.
 
 ---
 
-## 3. Version overview
+## 3. Models and supporting studies
 
-| Version / analysis | Purpose | Result |
+| Model / study | Purpose | Result |
 |---|---|---|
-| Modular main | End-to-end CAIG + FOG workflow | Reproduces the monolithic baseline with all acceptance checks passing. |
-| V1 | Ideal CAIG physics | Rotation, total and differential phases and transition probability validated. |
-| V2.1 | CAIG + MATLAB conventional gyro | `imuSensor` reproduces the FOG constant bias. |
-| V2.2 | CAIG/FOG frame misalignment | Zhang Eq. (16) numerically validated. |
-| V2.3 | Triaxial sway | All misalignment states excited; stacked measurement-sensitivity rank = 6/6. |
-| V2.4a | Ideal Kalman | Six injected states recovered with almost numerical precision. |
-| V2.4b | Noisy Kalman | FOG ARW corrected to the validated single-sided MATLAB convention; noisy estimation characterized. |
-| V2.4c | Kalman + timetable | `timetable + retime` replaces manual multirate indexing without changing the Kalman result. |
-| V2.5 | Monte Carlo | Statistical estimator performance evaluated with corrected FOG noise. |
-| V2.6 | Duration study | Longer observation reduces bias dispersion and RMSE under the current white-noise model. |
-| V2.7 | Synchronization study | Millisecond timestamp mismatch can exceed the FOG bias being estimated. |
-| V2.8 | MATLAB timetable synchronization | `retime` and `synchronize` validated for aligned and offset CAIG/FOG clocks. |
+| Modular main | End-to-end CAIG + FOG workflow | Matches the numerical reference with all acceptance checks passing. |
+| Ideal CAIG physics | Ideal CAIG physics | Rotation, total and differential phases and transition probability validated. |
+| FOG hybridization | CAIG + MATLAB conventional gyro | `imuSensor` reproduces the FOG constant bias. |
+| Frame misalignment | CAIG/FOG frame misalignment | Zhang Eq. (16) numerically validated. |
+| Triaxial sway | Triaxial sway | All misalignment states excited; stacked measurement-sensitivity rank = 6/6. |
+| Ideal Kalman model | Ideal Kalman | Six injected states recovered with almost numerical precision. |
+| Noisy Kalman model | Noisy Kalman | FOG ARW corrected to the validated single-sided MATLAB convention; noisy estimation characterized. |
+| Timetable Kalman model | Kalman + timetable | `timetable + retime` replaces manual multirate indexing without changing the Kalman result. |
+| Monte Carlo study | Monte Carlo | Statistical estimator performance evaluated with corrected FOG noise. |
+| Duration study | Duration study | Longer observation reduces bias dispersion and RMSE under the current white-noise model. |
+| Timing-offset study | Synchronization study | Millisecond timestamp mismatch can exceed the FOG bias being estimated. |
+| Timetable synchronization | MATLAB timetable synchronization | `retime` and `synchronize` validated for aligned and offset CAIG/FOG clocks. |
 | Allan validation | FOG noise scaling | `single-sided` reproduces the input ARW scale in the MATLAB Allan-variance workflow. |
 | CAIG noise sensitivity | CAIG scaling robustness | Alternative white-noise scaling changes estimator RMSE only modestly because FOG noise dominates the current observation covariance. |
 
 ---
 
-## 4. V1 — Ideal CAIG physics
+## 4. Ideal CAIG physics
 
 ~~~~text
 Phi_rot = -2 k_eff · (Omega × v) T^2
@@ -121,7 +121,7 @@ DeltaPhi_total = k_eff · g T^2 + Phi_rot
                  - 2 k_eff · (Omega × g) T^3 + DeltaPhi0
 ~~~~
 
-For V1, `DeltaPhi0 = 0`. The dual-interferometer differential phase is
+For the ideal physical model, `DeltaPhi0 = 0`. The dual-interferometer differential phase is
 
 ~~~~text
 Phi_diff = Phi_tot1 - Phi_tot2
@@ -156,9 +156,9 @@ P(Phi)  = P(Phi + 2*pi*n)
 
 Fringe contrast is not introduced because it is not part of the Zhang Eq. (10) model currently being reproduced.
 
-### V1 coordinate convention
+### Ideal CAIG physics coordinate convention
 
-The baseline V1 geometry uses
+The ideal geometry uses
 
 ~~~~text
 v1 = [ v, 0, 0]
@@ -178,9 +178,9 @@ With this nominal geometry,
 k_eff · (Omega x g) = 0
 ~~~~
 
-and the rotation-gravity coupling term is zero in the nominal V1 configuration. The term remains implemented because it is part of the general model and was validated separately using a temporary gravity-tilt test.
+and the rotation-gravity coupling term is zero in the nominal ideal configuration. The term remains implemented because it is part of the general model and was validated separately using a temporary gravity-tilt test.
 
-### V1 simulation-only inputs
+### Ideal CAIG physics simulation-only inputs
 
 ~~~~text
 Simulation duration        = 20 s
@@ -194,7 +194,7 @@ These are synthetic simulation inputs, not CAIG hardware specifications.
 
 ---
 
-## 5. V1 parameter traceability
+## 5. Ideal CAIG physics parameter traceability
 
 | Parameter | Value | Source/classification |
 |---|---:|---|
@@ -211,7 +211,7 @@ Tackmann is used only to fill numerical parameters not provided by Zhang; it doe
 
 ---
 
-## 6. V1 validation
+## 6. Ideal CAIG physics validation
 
 | Test | Result |
 |---|---:|
@@ -225,9 +225,9 @@ Tackmann is used only to fill numerical parameters not provided by Zhang; it doe
 
 ---
 
-## 7. V2 — Hybrid CAIG + FOG
+## 7. Hybrid CAIG-FOG model
 
-From V2 onward, the internal CAIG physics is treated as validated and the project studies the CAIG + FOG monitoring system.
+The hybrid model studies the CAIG + FOG monitoring system using an independently checked ideal interferometric model and a separate rate-level sensor abstraction.
 
 The conventional FOG uses MATLAB `gyroparams` and `imuSensor`. The CAIG-specific physics remains custom because MATLAB does not provide a ready-made cold-atom gyroscope sensor object corresponding to the Zhang architecture.
 
@@ -235,7 +235,7 @@ The current multirate data architecture uses MATLAB `timetable` objects and `ret
 
 ---
 
-## 8. V2.1 — `imuSensor` FOG
+## 8. FOG hybridization with `imuSensor`
 
 Zhang parameters are
 
@@ -262,7 +262,7 @@ with practically zero numerical error.
 
 ---
 
-## 9. V2.2 — Frame misalignment
+## 9. Frame misalignment
 
 This is frame-to-frame misalignment between the CAIG A-frame and FOG F-frame. It is not `gyroparams.AxesMisalignment`.
 
@@ -288,7 +288,7 @@ Motion only along Y does not excite `phi_y`, motivating the triaxial-motion stud
 
 ---
 
-## 10. V2.3 — Triaxial sway
+## 10. Triaxial sway
 
 Zhang level-2 sway values:
 
@@ -323,7 +323,7 @@ This is a stacked measurement-sensitivity rank check. It is **not** presented as
 
 ---
 
-## 11. V2.4a — Ideal Kalman filter
+## 11. Ideal Kalman filter
 
 State vector:
 
@@ -348,7 +348,7 @@ FOG-bias std     = [0.1, 0.1, 0.1] deg/h
 
 Zhang defines the measurement covariance `R` but does not provide a numerical value.
 
-V2.4a contains no random measurement noise. Its very small `R` is only a numerical choice for structural validation.
+The ideal Kalman model contains no random measurement noise. Its very small `R` is only a numerical choice for structural validation.
 
 Results:
 
@@ -359,7 +359,7 @@ Estimated FOG bias     = [0.100000, 0.100000, 0.100000] deg/h
 
 Errors are approximately numerical precision.
 
-V2.4a is therefore a **noise-free structural Kalman validation**.
+This is therefore a **noise-free structural Kalman validation**.
 
 ---
 
@@ -434,7 +434,7 @@ This validation establishes consistency with the MATLAB parameter scaling used i
 
 ---
 
-## 13. V2.4b — Noisy Kalman
+## 13. Noisy Kalman filter
 
 ### FOG model
 
@@ -522,7 +522,7 @@ It does **not** prove which CAIG spectral convention is physically correct.
 
 ---
 
-## 15. V2.5 — Monte Carlo
+## 15. Monte Carlo study
 
 `N = 100` runs, `duration = 120 s`, with the corrected single-sided FOG model.
 
@@ -562,7 +562,7 @@ At 120 s, the misalignment estimates remain close to the injected values, wherea
 
 ---
 
-## 16. V2.6 — Duration study
+## 16. Duration study
 
 `N = 100` Monte Carlo runs for `120 s`, `300 s`, and `600 s`.
 
@@ -636,7 +636,7 @@ This behavior is established **within the current independent white-noise, const
 
 ---
 
-## 17. V2.7 — Synchronization study
+## 17. Timing-offset study
 
 Zhang states that CAIG and FOG outputs must be synchronized by data processing and warns that differing data rates/time labels can cause significant errors.
 
@@ -680,7 +680,7 @@ e_sync ≈ -omega_dot * Delta t
 
 Millisecond mismatch can therefore exceed the target `0.1 deg/h` FOG bias.
 
-The V2.7 timestamp-interpolation test gave, for example, an X maximum residual of approximately
+The timestamp-interpolation test gave, for example, an X maximum residual of approximately
 
 ~~~~text
 2 ms -> 4.47e-4 deg/h
@@ -693,9 +693,9 @@ Timestamp-aware synchronization reduces deterministic timing mismatch in this id
 
 ---
 
-## 18. V2.8 — MATLAB `timetable` synchronization
+## 18. MATLAB `timetable` synchronization
 
-V2.8 replaces the earlier manual `interp1` synchronization experiment with MATLAB-native time handling using
+The timetable synchronization study compares manual `interp1` interpolation with MATLAB-native time handling using
 
 ~~~~matlab
 timetable
@@ -756,11 +756,11 @@ The practical conclusion is that sample-number indexing is acceptable only when 
 
 ---
 
-## 19. V2.4c — Kalman + timetable integration
+## 19. Kalman and timetable integration
 
-V2.4c integrates the MATLAB-native synchronization layer into the full noisy Kalman baseline.
+The timetable-based Kalman model integrates the MATLAB-native synchronization layer into the full noisy Kalman baseline.
 
-The scientific model is unchanged relative to the corrected V2.4b:
+The scientific model is unchanged relative to the noisy Kalman model with the stated FOG convention:
 
 ~~~~text
 same ground truth
@@ -800,7 +800,7 @@ Maximum timestamp difference:
 0 s
 ~~~~
 
-The final Kalman results are identical to the corrected V2.4b:
+The final Kalman results are identical to the noisy Kalman model with the stated FOG convention:
 
 ~~~~text
 Misalignment = [1.000694, 2.005255, 3.008474] deg
@@ -926,7 +926,7 @@ Detailed notes are kept in `references/parameter_sources.md`.
 
 ## 23. Modeling assumptions and limitations
 
-- V1 sinusoidal synthetic rotation.
+- Sinusoidal synthetic rotation for the ideal CAIG model.
 - Zhang remains the main system architecture.
 - Parameters absent from Zhang are taken from comparable scientific experiments only when needed and are documented separately.
 - Triaxial sway uses sinusoidal roll, pitch, and heading because Zhang supplies amplitudes and periods but not an exact waveform.
@@ -939,7 +939,7 @@ Detailed notes are kept in `references/parameter_sources.md`.
 - `Q = 0` because true simulated bias and misalignment are constant.
 - The current baseline clocks are exactly aligned.
 - `retime(...,'linear')` is the MATLAB-native synchronization choice.
-- Artificial timing offsets in V2.7/V2.8 are simulation choices and are not measured Zhang-system delays.
+- Artificial timing offsets in the synchronization studies are simulation choices and are not measured Zhang-system delays.
 - For truly interpolated noisy FOG samples, the effective measurement covariance may differ from the current `R` and may include temporal correlation.
 - The current duration study assumes independent white noise and constant bias; real long-term behavior may include drift, bias instability, dead time, clock effects, and correlated noise.
 - The current `H` uses the true simulation angular rate to isolate the Zhang observation model from errors-in-variables effects. Using measured/noisy angular rate in `H` is a separate future problem.
@@ -964,17 +964,17 @@ Detailed notes are kept in `references/parameter_sources.md`.
 13. Millisecond-level timing mismatch can exceed the target FOG bias.
 14. Timestamp-aware synchronization strongly reduces deterministic timing error.
 15. MATLAB `timetable + retime` reproduces manual indexing to numerical precision when the clocks are aligned.
-16. V2.4c preserves the V2.4b Kalman result while replacing fragile sample-number synchronization with timestamp-based processing.
+16. Timetable-based processing reproduces the index-based Kalman result while associating measurements through timestamps.
 17. Real offset/noisy interpolation requires a separate covariance analysis before reusing the aligned-case `R` unchanged.
 
 ---
 
-## 25. Current project status
+## 25. Implemented checks and reference results
 
-### Completed
+### Implemented model and diagnostic checks
 
 - MATLAB IMU examples.
-- V1 CAIG ideal physics.
+- Ideal CAIG physics.
 - Rotation-phase validation.
 - `Omega x g` validation.
 - Transition-probability ambiguity validation.
@@ -996,9 +996,9 @@ Detailed notes are kept in `references/parameter_sources.md`.
 - Full noisy Kalman integration with `timetable + retime`.
 - Timetable-based Monte Carlo and duration-study variants.
 - Modular end-to-end main simulation.
-- Software regression against the original monolithic main.
+- Software regression against the numerical reference.
 
-### Current baseline
+### Reference simulation
 
 The recommended end-to-end entry point is
 
@@ -1006,7 +1006,7 @@ The recommended end-to-end entry point is
 CAIG_Main_Simulation.m
 ~~~~
 
-It uses the validated FOG noise convention, MATLAB-native timestamp handling, the Zhang six-state `trackingKF` implementation, grouped validation, and the existing plots. The original monolithic behavior was recorded before refactoring and reproduced after modularization.
+It uses the validated FOG noise convention, MATLAB-native timestamp handling, the Zhang six-state `trackingKF` implementation, grouped validation, and the existing plots. The software regression checks compare outputs with the stated numerical reference.
 
 Current regression result:
 
@@ -1027,9 +1027,9 @@ Misalignment = [1.000694, 2.005255, 3.008474] deg
 FOG bias     = [0.067151, 0.055620, 0.128074] deg/h
 ~~~~
 
-### Next implementation task
+### Open research questions
 
-Use the modular main as the frozen end-to-end software baseline for the next explicitly selected scientific question. New effects should be introduced in dedicated analysis scripts before integration into the main workflow.
+The modular simulation provides a reference for isolating additional physical and statistical effects. Each proposed extension requires independent evaluation before its conclusions can be applied to the combined model.
 
 Candidate next research steps include:
 
@@ -1055,7 +1055,7 @@ From the `CAIG_Project` root:
 CAIG_Main_Simulation
 ~~~~
 
-The main script locates its own directory and adds only the eight modular directories under `src/` to the MATLAB path. Historical V1/V2 scripts, analysis scripts, figures, references, and `.git` are not added. It can also be launched from another working directory with:
+The main script locates its own directory and adds only the eight modular directories under `src/` to the MATLAB path. Archived scripts, analysis scripts, figures, references, and `.git` are not added. It can also be launched from another working directory with:
 
 ~~~~matlab
 projectRoot = 'path/to/CAIG_Project';
@@ -1064,18 +1064,22 @@ run(fullfile(projectRoot,'CAIG_Main_Simulation.m'))
 
 Before execution, the main verifies that `trackingKF`, `gyroparams`, and `imuSensor` are available. It stops with an explicit error if any dependency is unavailable. The generated `SimulationOutput` struct contains synchronized sensor timetables, estimate histories, CAIG phase/probability outputs, final estimates, `R`, the acceptance result, the complete configuration, validation details, and the CAIG-physics result struct.
 
-### Validated development and analysis scripts
+### Historical validation scripts
+
+The archived implementations below are retained for historical validation and
+reproducibility. They are not required for the recommended modular simulation
+or the [current physical-chain experiments](../experiments/zhang_2019/README.md).
 
 **Run each block independently from the `CAIG_Project` root.** Do not run all `cd` blocks sequentially in one MATLAB session without returning to the project root.
 
-### V1
+#### Ideal CAIG physics
 
 ~~~~matlab
 cd('archive/v1')
 CAIG_V1_ideal
 ~~~~
 
-From the project root, for V1 validation:
+From the project root, for ideal-physics checks:
 
 ~~~~matlab
 cd('archive/v1/validation')
@@ -1084,7 +1088,7 @@ CAIG_V1_validation_phase_detection
 CAIG_V1_validation_scale_factor_dynamic_range
 ~~~~
 
-### Hybrid model
+#### Hybrid model
 
 ~~~~matlab
 cd('archive/v2')
@@ -1093,7 +1097,7 @@ CAIG_V2_2_misalignment
 CAIG_V2_3_triaxial_sway
 ~~~~
 
-### Kalman
+#### Kalman
 
 ~~~~matlab
 cd('archive/v2')
@@ -1102,7 +1106,10 @@ CAIG_V2_4b_Kalman_noisy
 CAIG_V2_4c_Kalman_timetable
 ~~~~
 
-### Analysis
+### Independent supporting analyses
+
+These optional studies are separate from the current experimental workflow.
+Run the following block independently from the repository root.
 
 ~~~~matlab
 cd('experiments/legacy_analysis')
@@ -1132,9 +1139,9 @@ Zhang_Figure6_ConstantSpeed_Behavior
 
 ---
 
-## 28. Version policy
+## 28. Reproducibility and interpretation
 
-- V1 remains frozen as the ideal physical baseline.
+- The ideal physical model is retained as a numerical reference.
 - Do not overwrite validated versions when making architectural or physical changes.
 - Keep analysis scripts separated from physical-model scripts.
 - Use Zhang as the main system model.

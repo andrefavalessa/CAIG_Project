@@ -2,8 +2,8 @@
 
 Primary source: Zhang et al. (2019), *A Novel Monitoring Navigation Method for
 Cold Atom Interference Gyroscope*, [doi:10.3390/s19020222](https://doi.org/10.3390/s19020222).
-Page numbers below are printed article pages. The local PDF was read directly,
-including visual inspection of equations, tables and figures; it is not redistributed.
+Page numbers below refer to the printed article. The mapping distinguishes
+published concepts from implementation choices and simulation assumptions.
 
 | Article location | Implementation | Status |
 |---|---|---|
@@ -12,7 +12,7 @@ including visual inspection of equations, tables and figures; it is not redistri
 | pp. 7–8, Eqs. (14)–(18) | `estimation/figrepro_zhang.m` | Six states, `H=[skew(reconstructed omega_A),I]`, raw F minus reconstructed A; Joseph covariance update |
 | p. 9, observability discussion | `figrepro_verify.m`, `figrepro_validateT20ms.m` | Stacked, prior-scaled sensitivity rank 3 at constant rate, 6 for this sway; numerical linear rank, not a nonlinear proof |
 | p. 10, Eq. (28) and simulation setup | `config/figrepro_config.m` | Zero x0 and P0 from [1,2,3] deg and three 0.1 deg/h standard deviations; bias 0.1 deg/h, sample rates 100/5 Hz |
-| p. 10, section 4.1 and Figure 6 | `motion/figrepro_motion.m` | 15 knots, heading 30 deg, zero pitch/roll; geographic rates frozen at an assumed location |
+| p. 10, section 4.1 and Figure 6 | `motion/figrepro_motion.m` | 15 knots, heading 30 deg, zero pitch/roll; geographic rates held constant at an assumed location |
 | p. 11, section 4.3, Table 1 | same motion function | Level-2 roll/pitch/heading amplitudes [0.5,0.2,0.3] deg, periods [20,30,30] s; zero initial angles/speed; sine phases and Euler 3-2-1 body-rate mapping are project choices |
 | pp. 11–12, Table 2 and Figure 8 | `review/run_convergence_review.m` | Compare qualitatively and evaluate a declared separate metric; only level 2, not levels 4/6 |
 | p. 12, Figure 9 | fixed 5 Hz atomic rate here | Paper varies 5/20/100 Hz; increasing T here does NOT increase the data rate |
@@ -63,7 +63,7 @@ readout, giving availability offsets 10/48 ms, with a fixed 200 ms shot period.
 All active numbers are in `config/figrepro_config*.m`. Sway omits Earth/transport
 rates; constant-speed includes them. The injected [1,2,3] degrees are a finite
 rotation vector in the simulator, whereas the estimated state is a small-angle
-vector. This produces an intentional, now quantified model discrepancy.
+vector. This produces the model discrepancy quantified in the convergence analysis.
 
 ## MATLAB noise convention
 
@@ -80,3 +80,17 @@ use is a component-noise adapter in F, not a navigation attitude simulation.
 Default axis errors and gyro acceleration sensitivity are zero. No second
 misalignment correction is applied. Internal rates are rad/s, angle states rad,
 bias states rad/s; displays use deg and deg/h.
+
+## Validation scope
+
+`figrepro_verify.m` and `figrepro_validateT20ms.m` check the implemented
+phase/rate identities, probability dependence, causal synchronization and
+linear sensitivity under the configured assumptions. Their numerical results
+are recorded in `review/results/`. `review/run_convergence_review.m` separates
+noise-realization effects from finite-rotation/linear-estimator discrepancies
+using the [predefined evaluation protocol](CONVERGENCE_PROTOCOL.md).
+
+These checks establish numerical consistency of the stated simulation, not
+hardware performance or a solution to periodic-measurement ambiguity. The
+known-branch control supplies simulator sign/fringe labels to test the
+conditional inverse and downstream estimator; it is not an operational result.
