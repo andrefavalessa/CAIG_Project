@@ -1,0 +1,27 @@
+{
+  "products": [
+    {
+      "Name": "MATLAB",
+      "Version": "25.1",
+      "ProductNumber": 1,
+      "Certain": true
+    },
+    {
+      "Name": "Sensor Fusion and Tracking Toolbox",
+      "Version": "25.1",
+      "ProductNumber": 157,
+      "Certain": false
+    },
+    {
+      "Name": "Navigation Toolbox",
+      "Version": "25.1",
+      "ProductNumber": 176,
+      "Certain": false
+    }
+  ],
+  "licenseFeatures": [
+    "matlab",
+    "navigation_toolbox"
+  ],
+  "release": "25.1.0.2973910 (R2025a) Update 1"
+}
