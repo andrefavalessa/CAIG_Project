@@ -30,7 +30,7 @@ sourceFolders = { ...
 };
 
 for k = 1:numel(sourceFolders)
-    addpath(fullfile(projectRoot,sourceFolders{k}));
+    addpath(fullfile(projectRoot,'src',sourceFolders{k}));
 end
 
 requiredFunctions = {'trackingKF';'gyroparams';'imuSensor'};

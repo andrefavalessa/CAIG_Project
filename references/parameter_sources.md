@@ -48,4 +48,4 @@ This document classifies every parameter used by the active modular baseline. It
 - The three-axis CAIG data supplied to the monitoring filter is a separate system-level rate abstraction.
 - Transition probability is not inverted to generate the main CAIG angular-rate output.
 - Frame-to-frame CAIG/FOG misalignment is not MATLAB `gyroparams.AxesMisalignment`.
-- Historical scripts under `01_V1_CAIG_Physics`, `02_V2_Hybrid_CAIG_FOG`, and `03_Analysis` preserve independent development and validation evidence.
+- Historical scripts under `archive/v1`, `archive/v2`, and `experiments/legacy_analysis` preserve independent development and validation evidence.

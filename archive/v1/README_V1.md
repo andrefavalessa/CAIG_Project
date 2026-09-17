@@ -6,6 +6,6 @@ This folder preserves the original ideal CAIG physics implementation and its ind
 - Tackmann et al. (2012) supplies the pulse separation time and atomic velocity that are not numerically specified by Zhang.
 - Steck supplies the Rb-87 D2 wavelength.
 
-Detailed current parameter traceability is maintained in [`../05_References/parameter_sources.md`](../05_References/parameter_sources.md).
+Detailed current parameter traceability is maintained in [`../../references/parameter_sources.md`](../../references/parameter_sources.md).
 
-The active modular end-to-end simulator is [`../CAIG_Main_Simulation.m`](../CAIG_Main_Simulation.m). V1 remains a frozen historical validation baseline.
+The active modular end-to-end simulator is [`../../CAIG_Main_Simulation.m`](../../CAIG_Main_Simulation.m). V1 remains a frozen historical validation baseline.
