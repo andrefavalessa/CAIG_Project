@@ -21,10 +21,10 @@ Statistics toolbox or downloaded data is required to reproduce these cases.
 ```sh
 git clone https://github.com/andrefavalessa/CAIG_Project.git
 cd CAIG_Project
-git switch review/zhang-scientific-audit-20260916
+git switch refactor/repository-layout-20260916
 ```
 
-In MATLAB, navigate to `05_Zhang_Physical_Figure_Reproduction`:
+In MATLAB, navigate to `experiments/zhang_2019`:
 
 ```matlab
 manifest = reproduce_all;  % four cases, fresh explicit comparison inputs
