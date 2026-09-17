@@ -52,6 +52,6 @@ R by 0.21875/0.82. Control-curve changes therefore do not demonstrate an atomic
 sensitivity improvement.
 
 Failure occurs before the Zhang filter. No truth repairs the main inverse and
-no Phase 5 acquisition machinery is added. The rectangular mean is a reduced
+no autonomous fringe-acquisition algorithm is included. The rectangular mean is a reduced
 model, not a derived atomic sensitivity function. Readout and static gravity
 compensation remain ideal.
