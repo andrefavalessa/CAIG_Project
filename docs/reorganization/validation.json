@@ -1,0 +1,40 @@
+{
+  "matlabAvailable": true,
+  "mainBeforeAfter": {
+    "mainNumericalRegressionExact": true,
+    "mainAcceptancePassed": true,
+    "release": "25.1.0.2973910 (R2025a) Update 1"
+  },
+  "relocatedZhangWithHistoricalRegression": {
+    "matlabVersion": "25.1.0.2973910 (R2025a) Update 1",
+    "historicalRegressionPerformed": true,
+    "figureCount": 14,
+    "pngCount": 14,
+    "codeAnalyzer": [],
+    "passed": true
+  },
+  "cleanCheckoutWithoutIgnoredOutputs": {
+    "matlabVersion": "25.1.0.2973910 (R2025a) Update 1",
+    "historicalRegressionPerformed": false,
+    "figureCount": 14,
+    "pngCount": 14,
+    "codeAnalyzer": [],
+    "passed": true,
+    "cleanCheckoutMainExact": true,
+    "pathRestored": true,
+    "noSharedSourceRequired": true
+  },
+  "changedEntrypointsCodeAnalyzerMessages": 0,
+  "localReferenceHashCheck": {
+    "checked": 69,
+    "mismatches": 0
+  },
+  "cleanCheckoutReferenceHashCheck": {
+    "checked": 23,
+    "documentedIgnoredFilesAbsent": 46,
+    "mismatches": 0
+  },
+  "versionedReferenceContentMatchesPreviousRevision": true,
+  "localMarkdownLinksChecked": true,
+  "legacyMonteCarloDurationAndV3Rerun": false
+}

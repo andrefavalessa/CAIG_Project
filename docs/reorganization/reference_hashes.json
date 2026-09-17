@@ -1,0 +1,485 @@
+[
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_constant_speed_fog_bias.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure6_constant_speed_fog_bias.fig",
+    "sha256": "78f0da6ca07a495c078971a67d173ee8538706bc2bde71dc51541b838d67d1d8",
+    "bytes": 133353,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_constant_speed_fog_bias.png",
+    "newPath": "experiments/zhang_2019/outputs/figure6_constant_speed_fog_bias.png",
+    "sha256": "4b3e7d52e6f5048e90418d1700804146c8f24746fc23293b28e78accc237076c",
+    "bytes": 186548,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_constant_speed_misalignment.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure6_constant_speed_misalignment.fig",
+    "sha256": "34e97db3925e43e1a77c26d20d2dfbfaea1aad99d4451c4e1588e5e449b1c808",
+    "bytes": 128349,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_constant_speed_misalignment.png",
+    "newPath": "experiments/zhang_2019/outputs/figure6_constant_speed_misalignment.png",
+    "sha256": "b161b56d3f89574fea3278bc0b3f8a88cd776dd0180e50e6a652c93c1c112c21",
+    "bytes": 169243,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_constant_speed_results.mat",
+    "newPath": "experiments/zhang_2019/outputs/figure6_constant_speed_results.mat",
+    "sha256": "9146f30f5ff9be6d9b6ff40c4edf927ad7ddcd57d815ad0c6012219740df4938",
+    "bytes": 3877970,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_constant_speed_summary.json",
+    "newPath": "experiments/zhang_2019/outputs/figure6_constant_speed_summary.json",
+    "sha256": "a6a52299094798e57ac4456f83ee7331c9211f3e2053d854ae1ff0bea2fbf11c",
+    "bytes": 2989,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_ambiguity.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_ambiguity.fig",
+    "sha256": "0bb3ea60d143e77b7576d411e33838085030d6ba01f870a83e421a5254259998",
+    "bytes": 53932,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_ambiguity.png",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_ambiguity.png",
+    "sha256": "0cce938f1013844f11527af6b6d57be3e94b9dc257a6c5ebee61cb57ad9cca24",
+    "bytes": 211028,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_fog_bias.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_fog_bias.fig",
+    "sha256": "2a470b2c6d0ccd4f8f6ce7035f9ecd119919cac9ac53c369e0dcab2f339216ac",
+    "bytes": 8814,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_fog_bias.png",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_fog_bias.png",
+    "sha256": "98aee3c03a3c2a6de7afcd78288a5655498ca787cf5ab3dea0fa880578dcc75a",
+    "bytes": 120973,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_known_branch_control_fog_bias.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_known_branch_control_fog_bias.fig",
+    "sha256": "a57fd4663715461c9dc20847459e66ba8c9d2cfcc03538f51e659db1024352be",
+    "bytes": 135059,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_known_branch_control_fog_bias.png",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_known_branch_control_fog_bias.png",
+    "sha256": "6116a89963ca1ee31fb35571918c0d6c7a46a0c3311b97c9ee7339d8c1a440e4",
+    "bytes": 178856,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_known_branch_control_misalignment.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_known_branch_control_misalignment.fig",
+    "sha256": "168f00f84338d192fb45c4aed256944da14f06deb437fe45f6f470a15b3cba6b",
+    "bytes": 130074,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_known_branch_control_misalignment.png",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_known_branch_control_misalignment.png",
+    "sha256": "64a5b6b31bc86fb2053fc743dfb2e1c7da7ecbb4a9b5eab60855fd2af2e14486",
+    "bytes": 154997,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_known_branch_control_results.mat",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_known_branch_control_results.mat",
+    "sha256": "ca74cc083bebb2219991269da41f63dc3015c165b34c16a265340f04fb0aa594",
+    "bytes": 1099366,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_known_branch_control_summary.json",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_known_branch_control_summary.json",
+    "sha256": "49d67a80a0f526dd06d3ca764cb58439916e15cb1947a01f2f290ed4ab9fa624",
+    "bytes": 1441,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_misalignment.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_misalignment.fig",
+    "sha256": "949528a242f0fcbfdf481535a92b98c4cb77525eea43adbbc40daab0155db83e",
+    "bytes": 8826,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_misalignment.png",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_misalignment.png",
+    "sha256": "176adb37eb2cf15f08c90ceffe55fb106b3c3085a116702ab95666abcf6756a9",
+    "bytes": 122454,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_results.mat",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_results.mat",
+    "sha256": "8c18d6a8a626cc081365a62ef183d68f77e5983d96f105c3caf0a8360b3af4fd",
+    "bytes": 3405770,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure6_T20ms_constant_speed_summary.json",
+    "newPath": "experiments/zhang_2019/outputs/figure6_T20ms_constant_speed_summary.json",
+    "sha256": "7f2cfa586e2cc7af434c23123c05bbb3dc82597dccb73bbd05b4e8dcb677d3bd",
+    "bytes": 6788,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_ambiguity.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_ambiguity.fig",
+    "sha256": "d143f44a51d77969fa6b34fa8ca4d8fba30fa4dbe96dd5ff10ad5d4dc5864f58",
+    "bytes": 82600,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_ambiguity.png",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_ambiguity.png",
+    "sha256": "929ae8398403a3d7f37b859507eb5b832da58ad017b9829faad9d5db86d221cf",
+    "bytes": 336894,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_fog_bias.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_fog_bias.fig",
+    "sha256": "4df2b781e84ef760704a3091564676f2aaf7a44bfc2930f2af11be7373000334",
+    "bytes": 8819,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_fog_bias.png",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_fog_bias.png",
+    "sha256": "ff7bff98468815df345bddff2f2e16199ee6d017376c83a9660c039bebb9be36",
+    "bytes": 118275,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_known_branch_control_fog_bias.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_known_branch_control_fog_bias.fig",
+    "sha256": "f011eff61e9693e4bda1fdc62398d744e01ced51e9d41ed983091bd20938626a",
+    "bytes": 135093,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_known_branch_control_fog_bias.png",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_known_branch_control_fog_bias.png",
+    "sha256": "18281d6fca26b49e1217c534a70774bb939359454cb3c5b5cdb4c8f39573d542",
+    "bytes": 181253,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_known_branch_control_misalignment.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_known_branch_control_misalignment.fig",
+    "sha256": "47c498d6f425f671553f77b41340b8101666cf4abd181a0f29ec37f1334bbad8",
+    "bytes": 123842,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_known_branch_control_misalignment.png",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_known_branch_control_misalignment.png",
+    "sha256": "7f006cef83a6e5d5e6b5f297350e75b3ea05a86e16aaf4965b3b48793b682119",
+    "bytes": 143013,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_known_branch_control_results.mat",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_known_branch_control_results.mat",
+    "sha256": "2fdb0a53bdbd54ee2952295735fc7bb3a5046e46f2b5610faac5dbb1f383a2c2",
+    "bytes": 1609999,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_known_branch_control_summary.json",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_known_branch_control_summary.json",
+    "sha256": "433f80754e4b93f2dba555493fd361f39e8d69b6b35308216ab1bc8cab3fd759",
+    "bytes": 1412,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_misalignment.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_misalignment.fig",
+    "sha256": "eedfb9d34cebbf449ac71b0677e899ef41ac7afa476dc77e102b834e5fc1b6dd",
+    "bytes": 8824,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_misalignment.png",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_misalignment.png",
+    "sha256": "fd20fcb38dcc8e94e2eb1eee5d1f213984efaa08d1289bd5296d0aa2f2b63c72",
+    "bytes": 119654,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_results.mat",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_results.mat",
+    "sha256": "eec75b7c31ed3b558a8c835671cdf257ceb681c802559c1bf203345fe871f4fa",
+    "bytes": 6690344,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_T20ms_triaxial_sway_summary.json",
+    "newPath": "experiments/zhang_2019/outputs/figure8_T20ms_triaxial_sway_summary.json",
+    "sha256": "701e98a1831628f1057e622d7ef78159bff1a55ed2e2b8143825ace9ad0994fc",
+    "bytes": 6939,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_triaxial_sway_fog_bias.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure8_triaxial_sway_fog_bias.fig",
+    "sha256": "035f8c92796f621165c124351785b1fbcf723b7d71bb78c5540a8658a9f562a4",
+    "bytes": 132761,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_triaxial_sway_fog_bias.png",
+    "newPath": "experiments/zhang_2019/outputs/figure8_triaxial_sway_fog_bias.png",
+    "sha256": "ec5e21fc58178b450d2a1484054e2c042061af07503f4681e9f5613b46c7d782",
+    "bytes": 199103,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_triaxial_sway_misalignment.fig",
+    "newPath": "experiments/zhang_2019/outputs/figure8_triaxial_sway_misalignment.fig",
+    "sha256": "4b4d2888a431f68697b7e373218538cbb557511c85cc67ade64072b026a33cf9",
+    "bytes": 122361,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_triaxial_sway_misalignment.png",
+    "newPath": "experiments/zhang_2019/outputs/figure8_triaxial_sway_misalignment.png",
+    "sha256": "d2cecff434b3a52f9e09711175a66c92a383cae2bac1a837338ff7df0fa18b5c",
+    "bytes": 140381,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_triaxial_sway_results.mat",
+    "newPath": "experiments/zhang_2019/outputs/figure8_triaxial_sway_results.mat",
+    "sha256": "2149474cd7f862a5e27ae6ba157652abfbb84ce9a00ef8c6f4de011a26a9ceb8",
+    "bytes": 7234134,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/figure8_triaxial_sway_summary.json",
+    "newPath": "experiments/zhang_2019/outputs/figure8_triaxial_sway_summary.json",
+    "sha256": "808832ba525dfe8298515bb5b0712480030db1100e00f6f6e650f52690ffb129",
+    "bytes": 2940,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/matlab_validation.json",
+    "newPath": "experiments/zhang_2019/outputs/matlab_validation.json",
+    "sha256": "08fb6830448207773a1c22a328d7c6def2115f5ea653b8bcee64371edc1a3172",
+    "bytes": 2100,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/preservation_baseline.json",
+    "newPath": "experiments/zhang_2019/outputs/preservation_baseline.json",
+    "sha256": "58943b2d34e69ab3cf248ab2bd8a08f0abfd181a0877acbcd71aa490bb132e49",
+    "bytes": 64547,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/preservation_status.json",
+    "newPath": "experiments/zhang_2019/outputs/preservation_status.json",
+    "sha256": "568d32a6b8ab15c7570aaae0db3fb3fe12319d55be00d69ea73f99e5593cfd2d",
+    "bytes": 293,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/T20ms_matlab_validation.json",
+    "newPath": "experiments/zhang_2019/outputs/T20ms_matlab_validation.json",
+    "sha256": "cf07eba42defec925d519ae01d0d365423c5cd9f2fbe25bb6c4c2d6e209a5a56",
+    "bytes": 3937,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/T20ms_preservation_baseline.json",
+    "newPath": "experiments/zhang_2019/outputs/T20ms_preservation_baseline.json",
+    "sha256": "43e1b8b25ecdf95cd4ee4888eb1af95cda7777ceeec1c33d5fb5a59bfc7466bb",
+    "bytes": 70266,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/outputs/T20ms_preservation_status.json",
+    "newPath": "experiments/zhang_2019/outputs/T20ms_preservation_status.json",
+    "sha256": "b7b93f32d339dbcafb2008009987ddf7ae2fc56c20ab13d01b4f8d2e83662c12",
+    "bytes": 294,
+    "tracked": false
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/convergence.json",
+    "newPath": "experiments/zhang_2019/review/results/convergence.json",
+    "sha256": "309be46844c0aa089be2981289eb4ee538e26cb01aaab20221d43a76cc667985",
+    "bytes": 12473,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/dependencies.json",
+    "newPath": "experiments/zhang_2019/review/results/dependencies.json",
+    "sha256": "250e3e77cef6c7a4f967675863e33029700f75d1eaa194bf767866cdca90fecf",
+    "bytes": 514,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/figure6_constant_speed_summary.json",
+    "newPath": "experiments/zhang_2019/review/results/figure6_constant_speed_summary.json",
+    "sha256": "f3a190e0e9325c76516f118647b1bdda7a08f2876a52e6ed75d081e3843f214a",
+    "bytes": 3080,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/figure6_T20ms_constant_speed_summary.json",
+    "newPath": "experiments/zhang_2019/review/results/figure6_T20ms_constant_speed_summary.json",
+    "sha256": "c2f1762b2624331bd59f17098442dcc572fbbf7ba5ef00cc128727ed1e17b323",
+    "bytes": 7027,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/figure8_T20ms_triaxial_sway_summary.json",
+    "newPath": "experiments/zhang_2019/review/results/figure8_T20ms_triaxial_sway_summary.json",
+    "sha256": "1bd35df8dc803412e42ba7378b3c503202cc5f50370272f478e370440654681e",
+    "bytes": 7168,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/figure8_triaxial_sway_summary.json",
+    "newPath": "experiments/zhang_2019/review/results/figure8_triaxial_sway_summary.json",
+    "sha256": "8379d845f11433ac6c311a9e18bdfa9cdfb3f10ee359b9f0b2fa8836a10e7ecc",
+    "bytes": 3027,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/final_checks.json",
+    "newPath": "experiments/zhang_2019/review/results/final_checks.json",
+    "sha256": "3759fbd9ae3fe72b4751b47447e881b881111f4e1f1dbbbfa5f4be75d136977e",
+    "bytes": 245,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/preservation.json",
+    "newPath": "experiments/zhang_2019/review/results/preservation.json",
+    "sha256": "e73923bf4d09c13eb769ad6a1dcfc1315d307bfd903727470b8cfbd1c8a1cba7",
+    "bytes": 412,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/regression.json",
+    "newPath": "experiments/zhang_2019/review/results/regression.json",
+    "sha256": "9a564c58349333593bdb530838cea0f6678e18b391f8686d01b0a1a9883491d5",
+    "bytes": 178,
+    "tracked": true
+  },
+  {
+    "oldPath": "05_Zhang_Physical_Figure_Reproduction/review/results/sway_convergence.png",
+    "newPath": "experiments/zhang_2019/review/results/sway_convergence.png",
+    "sha256": "447c3c86000b18792f4bd2613818eb7b5aab288ce732f3bc501edcf56996a1f1",
+    "bytes": 108984,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V1/CAIG_V1_validation_phase_detection.pdf",
+    "newPath": "archive/figures/V1/CAIG_V1_validation_phase_detection.pdf",
+    "sha256": "0910dc8a82079b721695b8b0dd283363a21cfda65c921e7dcedd2919f2b49b76",
+    "bytes": 279758,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V1/CAIG_V1_validation_scale_factor_dynamic_range.pdf",
+    "newPath": "archive/figures/V1/CAIG_V1_validation_scale_factor_dynamic_range.pdf",
+    "sha256": "ec1f360ae9a98ab060888fa2c3e7ee7e457bdf22431eac0416665688c2ab23a5",
+    "bytes": 302708,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V1/grafv1.pdf",
+    "newPath": "archive/figures/V1/grafv1.pdf",
+    "sha256": "329987bb51fb5e9135d7b693251b8b35f36a07a07f2127e28bf138b8544d7674",
+    "bytes": 316600,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V1/grafv2.pdf",
+    "newPath": "archive/figures/V1/grafv2.pdf",
+    "sha256": "0ebc1da66f556801863c64cf049766be2f5c3dfcd9e8d77b5d25eb1677ec1532",
+    "bytes": 359911,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V1/grafv3.pdf",
+    "newPath": "archive/figures/V1/grafv3.pdf",
+    "sha256": "f455a1dc35e2873623c27b702f3a3186ebda2b785ed3d4dc14a15e7580f2c371",
+    "bytes": 351255,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V1/testg1.pdf",
+    "newPath": "archive/figures/V1/testg1.pdf",
+    "sha256": "63fb6e0c9fa2c3f721132091c7c93258786b7509124d049e66d14d77d6187bdf",
+    "bytes": 289778,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V1/testg2.pdf",
+    "newPath": "archive/figures/V1/testg2.pdf",
+    "sha256": "119a5c6d69e3513d2d7ee1521e92cda1bbaa90093cf3f978f7a39c8760b0ab15",
+    "bytes": 350016,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V2/CAIG_V2_1_CAIG_FOG.pdf",
+    "newPath": "archive/figures/V2/CAIG_V2_1_CAIG_FOG.pdf",
+    "sha256": "1a41f42a24d5e66bb6ad97690a0f097bdb8079d733fb1a702ef4f2fb1bd77508",
+    "bytes": 331894,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V2/CAIG_V2_2_imuSensor_misalignment.pdf",
+    "newPath": "archive/figures/V2/CAIG_V2_2_imuSensor_misalignment.pdf",
+    "sha256": "245c631883c7277f2ab5c5d225e99d6ff346b805f0428cd96bb790d585dba9fd",
+    "bytes": 408806,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V2/CAIG_V2_3_triaxial_sway.pdf",
+    "newPath": "archive/figures/V2/CAIG_V2_3_triaxial_sway.pdf",
+    "sha256": "d6cdc2c09c6c1d963cf33ab6757bed6618ec636fac383d38758315ab896f2be9",
+    "bytes": 471175,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V2/CAIG_V2_4b_noisy_Kalman.pdf",
+    "newPath": "archive/figures/V2/CAIG_V2_4b_noisy_Kalman.pdf",
+    "sha256": "d97f803181a1c8c1464215dd81c7e2126e879805b98e26a8c3b9ea94c8a36661",
+    "bytes": 291165,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V2/CAIG_V2_4b_noisy_Kalman2.pdf",
+    "newPath": "archive/figures/V2/CAIG_V2_4b_noisy_Kalman2.pdf",
+    "sha256": "2736ced6797981b3e27fec02545d147d0b3a5cfbaf843aab226824350e7dbaf7",
+    "bytes": 290629,
+    "tracked": true
+  },
+  {
+    "oldPath": "04_Figures/V2/CAIG_V2_4_Kalman.pdf",
+    "newPath": "archive/figures/V2/CAIG_V2_4_Kalman.pdf",
+    "sha256": "0ca6a1eee77eb0f827ab2bccc37d34fede7c695b6dbb3ffeb57c31c07405d137",
+    "bytes": 267545,
+    "tracked": true
+  }
+]

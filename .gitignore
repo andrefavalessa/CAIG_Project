@@ -14,3 +14,7 @@ codegen/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Preserved local snapshots and reorganization audit working files
+/archive/local/
+/docs/reorganization/local/

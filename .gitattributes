@@ -1,0 +1,7 @@
+# Keep reference artifacts byte-identical on Windows and Unix checkouts.
+archive/figures/** -text
+experiments/zhang_2019/review/results/** -text
+experiments/zhang_2019/review/preservation/historical_manifest.json -text
+# Existing CRLF bytes are part of these reference records, not trailing spaces.
+experiments/zhang_2019/review/results/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+experiments/zhang_2019/review/preservation/historical_manifest.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
