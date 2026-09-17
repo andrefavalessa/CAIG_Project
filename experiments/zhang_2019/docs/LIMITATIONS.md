@@ -1,6 +1,6 @@
-# Scope and next steps
+# Scientific limitations and research questions
 
-This is a readable, deterministic illustrative simulation with a physical
+This is a deterministic illustrative simulation with a physical
 probability chain, not validated sensor performance. Strengths include separate
 loop histories, measurement-only filter interfaces, causal timestamp checks,
 probability interventions, nullspace/covariance checks and reproducible seeds.
@@ -13,16 +13,16 @@ one sea state and a small diagnostic seed sample. Conditional KF covariance
 is not demonstrated frequentist coverage. Full rank does not imply rapid or
 unbiased estimation. Algebraic round-trip accuracy does not validate hardware.
 
-The legacy function named `figrepro_verify` tests the fixed demonstration
+The function `figrepro_verify` tests the fixed demonstration
 configuration. Its rank/noise/end-state assertions are not a general parameter
 acceptance suite. Large MATLAB structs/MAT files retain useful provenance but
 are costly; they remain generated artifacts rather than versioned datasets.
-The two T-specific forward/synchronization paths duplicate some logic; retaining
-them avoids an unnecessary rewrite while keeping timing assumptions visible.
+The two interrogation-time configurations use distinct forward and
+synchronization paths whose timing assumptions are specified separately.
 
 Next scientific steps: obtain Zhang's simulation code or numerical R/Q/noise,
 waveform and stopping criterion; derive the interrogation sensitivity function;
 model realistic probability/phase noise and contrast; assess estimator consistency
 under finite rotation; then design an acquisition experiment with measurable
-sign/fringe information. None of those extensions or Phase 5 machinery is
-introduced by this review.
+sign/fringe information. These extensions, including autonomous ambiguity
+resolution, are not included in the implemented experiments.

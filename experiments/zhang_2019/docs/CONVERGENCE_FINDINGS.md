@@ -7,21 +7,21 @@ reproduce that time. The 0.01 deg/h fluctuation criterion on p.13 concerns
 the field test and is not transferred here. Figure 8 uses different time
 scales for angles (0.5 min) and biases (5 min); Figure 9 varies data rate.
 
-The [fixed review protocol](CONVERGENCE_PROTOCOL.md) uses all three axes,
+The [predefined evaluation protocol](CONVERGENCE_PROTOCOL.md) uses all three axes,
 0.05 deg / 0.02 deg/h error tolerances and 30 s uninterrupted dwell. This
 is a descriptive metric, not a claim to reproduce Table 2's criterion.
 Results below are seconds: interval start / confirmation / final sustained start.
 
 | Sway case | Alignment | Bias (also joint in these cases) |
 |---|---|---|
-| Historical, exact rotation, seed 5606 | 26.21 / 56.21 / 26.21 | 333.21 / 363.21 / 506.01 |
+| Reference, exact rotation, seed 5606 | 26.21 / 56.21 / 26.21 | 333.21 / 363.21 / 506.01 |
 | Exact rotation, noise removed | 5.61 / 35.61 / 5.61 | 228.21 / 258.21 / 325.21 |
 | Linear rotation, noise removed | 4.81 / 34.81 / 4.81 | 94.81 / 124.81 / 94.81 |
 | Linear rotation, original noise | 7.01 / 37.01 / 7.01 | 332.21 / 362.21 / 332.21 |
 
 Constant speed never meets either group's dwell condition before 599.81 s;
 its rank-3 identification problem is not solved by waiting longer.
-For historical sway, the last measurement available by 74.60 s is at 74.41 s.
+For reference sway, the last measurement available by 74.60 s is at 74.41 s.
 Its angle errors are [0.002241,0.028737,-0.015421] deg and bias errors
 [0.067842,-0.082196,-0.031234] deg/h. Alignment and bias do not converge at
 the same rate. Machine-readable values are in `review/results/convergence.json`.
@@ -66,12 +66,12 @@ full linear sensitivity and estimates close to the injected values. Exact
 74.60 s agreement is not established. Motion waveform conventions, frames,
 noise, R, synchronization and the convergence definition are insufficiently
 specified in the publication for that comparison. x0/P0 and sample rates do
-match; Q=0 and our R are explicit specializations. No parameter was tuned to
+match; Q=0 and the implemented R are explicit specializations. No parameter was tuned to
 the paper's curves and short T is not assigned blame without a noise mechanism.
 
 ![Unsmoothed comparison](../review/results/sway_convergence.png)
 
-Historical 1 ms estimates versus injected reference and simulator-informed
+Reference 1 ms estimates versus injected reference and simulator-informed
 linear/noiseless downstream diagnostic. Same units and shared limits within
 each row; full histories, no smoothing or clipped excursions. The orange
 curve changes two factors relative to blue; the table isolates their effects
