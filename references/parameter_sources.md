@@ -15,13 +15,13 @@ This document classifies every parameter used by the active modular baseline. It
 | Level-2 heading sway | 0.30 deg amplitude, 30 s period | Zhang et al. (2019) | From Zhang | Triaxial truth motion |
 | CAIG bias | Treated as negligible | Zhang et al. (2019) | From Zhang | System-level CAIG rate abstraction |
 | Monitoring state | `[phi_x phi_y phi_z eps_Fx eps_Fy eps_Fz]^T` | Zhang et al. (2019) | From Zhang | Six-state `trackingKF` implementation |
-| Pulse separation time, `T` | 24.7 ms | Tackmann et al. (2012) | External experimental value | V1 CAIG phase and scale factors |
-| Atomic velocity, `vAtom` | 2.79 m/s | Tackmann et al. (2012) | External experimental value | V1 CAIG phase and scale factors |
+| Pulse separation time, `T` | 24.7 ms | Tackmann et al. (2012) | External experimental value | CAIG physical-model phase and scale factors |
+| Atomic velocity, `vAtom` | 2.79 m/s | Tackmann et al. (2012) | External experimental value | CAIG physical-model phase and scale factors |
 | Reported rotation sensitivity, `N_CAIG` | 6.1e-7 rad/s/sqrt(Hz) | Tackmann et al. (2012) | External experimental value | Input to the project CAIG noise mapping |
 | Rb-87 D2 wavelength, `lambda` | 780.241209686 nm | Steck | External reference value | Effective wave vector |
 | FOG angle random walk | 0.002 deg/sqrt(h) | EMCORE EG-1300 | External hardware value | FOG white-noise model |
-| Standard gravity, `g0` | 9.80665 m/s^2 | Conventional standard gravity | External conventional value | V1 CAIG gravity phase |
-| Effective wave vector, `keff` | `4*pi/lambda` = approximately 1.610575e7 1/m | Derived from `lambda` | Derived value | V1 CAIG phase and scale factors |
+| Standard gravity, `g0` | 9.80665 m/s^2 | Conventional standard gravity | External conventional value | CAIG physical-model gravity phase |
+| Effective wave vector, `keff` | `4*pi/lambda` = approximately 1.610575e7 1/m | Derived from `lambda` | Derived value | CAIG physical-model phase and scale factors |
 | FOG noise density, `N_FOG` | 5.817764e-7 rad/s/sqrt(Hz) | Converted from EMCORE ARW | Derived value | MATLAB `gyroparams.NoiseDensity` |
 | FOG sample sigma, `sigmaFOG` | 5.817764e-6 rad/s | `N_FOG*sqrt(Fs_FOG)` | Derived using the validated single-sided convention | Observation covariance and noise validation |
 | Single-interferometer scale factor, `Ksingle` | 5.482884e4 s | `2*keff*vAtom*T^2` | Derived value | CAIG physics validation |
@@ -38,7 +38,7 @@ This document classifies every parameter used by the active modular baseline. It
 | CAIG discrete sample noise | `sigmaCAIG = N_CAIG*sqrt(Fs_CAIG/2)` = 9.644947e-7 rad/s | Project conversion; **not specified by Tackmann** |
 | System-level CAIG axes | Identical independent CAIG white-noise level on all three axes | Rate-level abstraction; not a physical triaxial atom-interferometer geometry |
 | Sensor-noise relationship | Independent FOG and CAIG white noise | Used to derive `sigmaZ` and `R` |
-| Process covariance | `Q = 0` | Frozen simulation has constant true bias and misalignment states |
+| Process covariance | `Q = 0` | The reference simulation uses constant true bias and misalignment states |
 | Clock relationship | FOG and CAIG clocks exactly aligned in the main baseline | `retime` selects existing FOG epochs; offset-clock studies remain separate |
 | Kalman measurement matrix | True simulated angular rate is used inside `H` | Isolates the Zhang observation model from errors-in-variables effects |
 
@@ -48,4 +48,4 @@ This document classifies every parameter used by the active modular baseline. It
 - The three-axis CAIG data supplied to the monitoring filter is a separate system-level rate abstraction.
 - Transition probability is not inverted to generate the main CAIG angular-rate output.
 - Frame-to-frame CAIG/FOG misalignment is not MATLAB `gyroparams.AxesMisalignment`.
-- Historical scripts under `archive/v1`, `archive/v2`, and `experiments/legacy_analysis` preserve independent development and validation evidence.
+- Archived implementations under `archive/v1` and `archive/v2` provide historical validation and reproducibility references; independent supporting studies are in `experiments/legacy_analysis`. None is required for the current experimental workflow.

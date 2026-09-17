@@ -1,83 +1,96 @@
-# CAIG + FOG simulation and scientific experiments
+# Hybrid Cold-Atom and Fiber-Optic Gyroscope Simulation
 
-This MATLAB project studies a Cold Atom Interference Gyroscope (CAIG) and its
-combination with a Fiber-Optic Gyroscope (FOG) to estimate frame misalignment
-and FOG bias. It separates the modular system-level simulator, independent
-experiments and historical development evidence.
+MATLAB simulations of cold-atom interferometer gyroscope physics, fiber-optic
+gyroscope (FOG) measurements, frame-misalignment estimation and phase ambiguity.
+The scientific question is when reconstructed cold-atom gyroscope (CAIG) rates
+can support joint estimation of sensor misalignment and FOG bias.
 
-**Current experiment:** [Zhang 2019](experiments/zhang_2019/README.md), with an
-explicit chain from angular motion through two loop phases, two probabilities,
-phase reconstruction, synchronized rates and the Zhang monitoring filter.
-This is a qualitative scientific comparison, **not a quantitatively validated
-reproduction of Zhang**.
+## Measurement chain and experiments
+
+The [Zhang-style experiment](experiments/zhang_2019/README.md) models:
+
+```text
+angular motion -> separate loop phases -> two transition probabilities
+ -> reconstructed loop phases -> differential phase -> CAIG angular rate
+ -> synchronization with FOG measurements -> Zhang monitoring filter
+```
+
+It compares constant-speed motion and level-2 triaxial sway at interrogation
+times of 1 ms and 20 ms. The separate [modular simulator](docs/MODULAR_BASELINE.md)
+uses a three-axis rate-level CAIG abstraction and a Y-axis interferometric
+physics check; its filter input is not reconstructed from probabilities.
+[Supporting studies](experiments/legacy_analysis/README.md) address noise,
+synchronization, observation duration and Kalman implementations.
+
+## Results and interpretation
+
+- **1 ms reconstruction:** ideal loop probabilities recover angular rate within
+  a declared principal-branch operating envelope. This verifies the conditional
+  inverse, not autonomous fringe acquisition or hardware accuracy.
+- **Motion and estimation:** constant motion has linear sensitivity rank 3/6
+  and cannot identify all six states. Triaxial sway has rank 6/6 and brings
+  estimates near the injected parameters; rank alone does not guarantee convergence.
+- **20 ms ambiguity:** both motion cases leave the assumed branch. The normal
+  filter is blocked because reconstruction fails before estimation.
+- **Known-branch control:** simulator-provided signs and fringe indices isolate
+  the downstream estimator from ambiguity resolution. The control retains the
+  expected qualitative motion-dependent behavior. Its branch information is
+  not available from the hardware observations assumed here, so this is not
+  an operational reconstruction result.
+
+Causal ambiguity resolution remains unresolved. The convergence difference
+from Zhang's reported 74.60 s remains under investigation: the publication does
+not specify enough detail to equate that time with this project's evaluation
+criterion. These are simulation-based, qualitative comparisons, not a
+quantitatively validated reproduction of Zhang or a hardware demonstration.
+
+Other limitations include ideal probability detection and static gravity
+compensation, simplified interrogation dynamics, a rectangular-window
+approximation at 20 ms, and finite-rotation simulation with a first-order
+Zhang estimator. See [limitations](experiments/zhang_2019/docs/LIMITATIONS.md)
+and [convergence analysis](experiments/zhang_2019/docs/CONVERGENCE_FINDINGS.md).
 
 ## Run
+
+```sh
+git clone https://github.com/andrefavalessa/CAIG_Project.git
+cd CAIG_Project
+```
 
 From the repository root in MATLAB:
 
 ```matlab
-manifest = run_zhang_experiment;
-```
-
-This runs the constant-speed and level-2 sway cases at 1 ms and 20 ms, writing
-new PNG/FIG/MAT/JSON outputs under `experiments/zhang_2019/outputs/runs/`.
-It never overwrites a nonempty output directory or requires historical MAT
-files. The experiment also runs independently from its own folder using
-`reproduce_all` or any of its four individual entry scripts.
-
-The separate modular system-level simulation remains available:
-
-```matlab
+manifest = run_zhang_experiment;  % constant-speed and sway, at both times
+% Separate rate-level simulation:
 CAIG_Main_Simulation
 ```
 
-It uses only the eight explicit directories in `src/`, produces figures and
-the workspace struct `SimulationOutput`, and does not write reference files.
-Its three-axis CAIG input is a rate-level abstraction; the separate Y-axis
-physical check does not turn it into probability-based acquisition.
+Tested with MATLAB R2025a Update 1. The physical-chain experiment requires
+`imuSensor` and `gyroparams` (Navigation Toolbox was used); the modular
+simulator additionally requires `trackingKF`. See the experiment README for
+individual cases and detailed requirements. Use these entrypoints rather than
+recursively adding the repository to the MATLAB path.
 
-Tested with MATLAB R2025a Update 1. The Zhang experiment requires `imuSensor`
-and `gyroparams` (Navigation Toolbox was used). The modular main additionally
-requires `trackingKF`. See the experiment README and
-[modular documentation](docs/MODULAR_BASELINE.md) for dependencies and assumptions.
-Do not use `addpath(genpath(pwd))`: archived/local functions can shadow active modules.
+Each experiment run writes new PNG/FIG/MAT/JSON files under
+`experiments/zhang_2019/outputs/runs/`. Nonempty destinations are rejected.
+Versioned reference summaries and an explanatory figure are in
+[`review/results/`](experiments/zhang_2019/review/results/). Complete generated
+outputs are not distributed with the source; existing reference files, when
+present, reside directly under `experiments/zhang_2019/outputs/`. No saved
+output is required to run the experiment.
 
-## Repository map
+## Organization and scientific sources
 
-| Location | Purpose |
+| Directory | Contents |
 |---|---|
-| `src/` | Modules actually called by `CAIG_Main_Simulation.m` |
-| `experiments/zhang_2019/` | Autonomous physical-chain experiment; its modules stay internal |
-| `experiments/legacy_analysis/` | Independent noise, timing, Monte Carlo, duration and filter-comparison studies |
-| `archive/v1/`, `archive/v2/` | Preserved historical MATLAB versions |
-| `archive/figures/` | Original V1/V2 reference PDF figures, byte-preserved |
-| `docs/` | Scientific documentation, execution notes and reorganization evidence |
-| `references/` | Bibliography, links and parameter-source register |
+| `src/` | Reusable scientific modules for the modular simulator |
+| `experiments/` | Independent, reproducible experiments with their own documentation |
+| `docs/` | Methodology and supporting scientific documentation |
+| `references/` | Bibliography and parameter-source notes |
+| `archive/` | Historical implementations and reference figures |
 
-## Reference results and limitations
-
-Historical Zhang reference PNG/FIG/MAT/JSON files remain locally at
-`experiments/zhang_2019/outputs/` (direct children, distinct from new `runs/`).
-Those large generated files are ignored by Git as before. A clone includes
-the small reviewed summaries and explanatory image in
-[`experiments/zhang_2019/review/results/`](experiments/zhang_2019/review/results/),
-the original versioned PDFs in [`archive/figures/`](archive/figures/), and all
-source needed to generate fresh results. The hash manifest and move map are in
-[`docs/reorganization/`](docs/reorganization/README.md).
-
-**Ambiguity at T=20 ms remains unresolved.** The principal probability inverse
-fails in both cases, so the normal filter is blocked. Known-branch controls use
-simulator information and do not demonstrate autonomous reconstruction.
-
-**The convergence difference from Zhang remains under investigation.** Noise,
-synchronization and finite-rotation/linearized-model differences have been
-diagnosed; the paper does not specify enough detail to equate its 74.60 s with
-the project's own stopping metric. See
-[convergence findings](experiments/zhang_2019/docs/CONVERGENCE_FINDINGS.md) and
-[limitations](experiments/zhang_2019/docs/LIMITATIONS.md). Ideal atomic readout
-and ideal static gravity compensation also limit interpretation.
-
-No model, parameter, filter or historical result was changed for this layout.
-No distribution license has been added. Pre-existing untracked V3 work and
-compressed snapshots remain local under ignored `archive/local/`; they are
-frozen snapshots, not part of the active MATLAB path or this publication.
+[Scientific traceability](experiments/zhang_2019/docs/SCIENTIFIC_TRACEABILITY.md)
+connects sources, equations, implementations and assumptions.
+[References](references/README.md) and the [documentation guide](docs/README.md)
+provide further detail. Archived implementations are not prerequisites for
+understanding or executing the current experiments.
